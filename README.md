@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Phone Catalog
+## Running locally
+### FROM **ROOT** 
+- Running the server:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```sh
+npm run install-server
+npm run start-server
+```
 
-## Available Scripts
+- Running the client
 
-In the project directory, you can run:
+```sh
+npm install
+npm start
+```
+## Running with docker compose
+### FROM **ROOT** 
+```sh
+docker build -f ./server/Dockerfile -t server .
+docker build -f Dockerfile -t phone-app .
+docker-compose up
+```
+The web application will be available on port **localhost:3000**, while the server is at **localhost:3001**.
+## Explaining the application
+The server uses a json file to mock a database. It has four end points:
+- Get Phones
+- Get Phone by Id
+- Create Phone
+- Delete Phone
 
-### `npm start`
+Newly created device will not be added to the JSON file, but it will persist throughout the lifetime of the server. If you restart the server, it will reset all devices that are added by user.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The client will get all phones to display on the main page. You can click on individual phone to get more information. Finally you can add a phone with **Add Device** button. In which case, make sure to fill in all fields.
+## Tech stacks
+### Server
+- [NodeJS] - evented I/O for the backend
+- [Express] - fast node.js network app framework
+- [Express Validator] - validate incoming request
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Client
+- [ReactJS] - JavaScript library for building user interfaces
+- [React Spinner] - React SVG loader spinner
+- [React Modal] - React Responsive Modal
+- [Docker] - Build and compose images
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[//]: # (References)
+   [NodeJS]: <https://nodejs.org>
+   [Express Validator]: <https://express-validator.github.io/docs/>
+   [Express]: <http://expressjs.com>
+   [ReactJS]: <https://reactjs.org/>
+   [React Spinner]: <https://github.com/mhnpd/react-loader-spinner>
+   [React Modal]: <https://github.com/pradel/react-responsive-modal>
+   [Docker]: <https://www.docker.com/>
